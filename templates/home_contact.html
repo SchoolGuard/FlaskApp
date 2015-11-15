@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html style='height:100%'>
+    <head>
+        <title>AJC</title>
+
+        <meta charset='utf-8'>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/static/stylesheets/bootstrap.css" media="screen" />
+        <link rel="stylesheet" href="/static/stylesheets/style_menu.css" >
+
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+        <script src="/static/js/style_menu.js"></script>
+        <script src="/static/js/jquery.transit.js"></script>
+        <script src="/static/js/hamburger-menu.js"></script>
+        <script src="/static/js/canvas-anim.js"></script>
+
+    </head>
+
+    <body style='height:100%'>
+        <div class="all-container">
+        <!--<div class="background"></div>-->
+            <canvas id='canvas'></canvas>
+            <div id='middle-container' class='body-container'>
+                <div class="main-me">
+                    <article>
+                          <h1 class="main-header" style="padding-top:130px">Contact</h1>
+>
+                    </article>
+                </div>
+            </div>
+
+            <div class="main-menu-container">
+                <div class='menu-container'>
+                    <div id='cssmenu' class="menu-positioned">
+                        <ul>
+                            <li><a href='/'>Home</a></li>
+                            <li class='has-sub'><a href='#'>Projects</a>
+                                <ul>
+                                    <li class='has-sub'><a href='#'>Natural Language</a>
+                                        <ul>
+                                            <li><a href='/TweetTime' class=''>TweetTime</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class='has-sub'><a href='#'>Algorithms</a>
+                                        <ul>
+                                            <li><a href='#'>Project 1</a></li>
+                                            <li><a href='#'>Project 2</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class='has-sub'><a href='#'>About</a>
+                                <ul>
+                                    <li><a href='#'>School</a></li>
+                                    <li><a href='#'>Other Stuff</a></li>
+                                </ul>
+                            </li>
+                            <li><a href='/Contact'>Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="burger-menu-container">
+                    <div id="nav-toggle" class="burger-menu"><span></span></div>
+                    <div class="clicker"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

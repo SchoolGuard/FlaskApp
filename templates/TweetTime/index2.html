@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      class="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+    <meta name="twitter:widgets:csp" content="on">
+    <title>Share a link on Twitter</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="https://abs.twimg.com/a/1434576220/css/tfw/intents_rosetta.bundle.css">
+      <meta name="native-url" content="twitter://post?text=Twitter%20Help%20Center%20%7C%20Adding%20the%20Tweet%20button%20to%20your%20website%20https%3A%2F%2Fsupport.twitter.com%2F%20via%20%40support">
+
+    <script data-require="jquery@1.10.1" data-semver="1.10.2" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+    <title>Post a Tweet on Twitter</title>
+
+    <style type="text/css">
+      html { display:none; }
+    </style>
+    <noscript>
+      <style type="text/css">
+        html { display: block; }
+      </style>
+    </noscript>
+  </head>
+  
+  
+  <body class=" tfw en logged-out ltr nofooter noloki">
+
+    <div id="header" role="banner">
+      <div class="bar">
+        <h1 class="logo">
+          <a class="alternate-context" href="https://twitter.com/">Twitter</a>
+        </h1>
+        
+        <div id="not-logged-in">
+          <a href="/">Back to home</a>
+          <a class="register alternate-context" href="https://twitter.com/signup?context=webintent&amp;follow=Support">Sign up</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="bd" role="main">
+      <h2 class="action-information">
+      TweetTime!
+      </h2>
+
+<div class="sign-in">
+    <p>
+      Can't think of an appropriate hashtag for your tweet?
+      Use our hashtag generator to find the hastag(s) perfect for your
+      specific tweet!(You don't need a twitter account to see what hashtags we recommend)
+      <a href="/TweetTime/about">Click here to learn more about us.</a>
+    </p>
+</div>
+
+<form
+  action="https://twitter.com/intent/sessions"
+  id="update-form"
+  method="post">
+  <div class="hd">
+      <input name="url" type="hidden" value="https://support.twitter.com/">
+  <input name="text" type="hidden" value="Twitter Help Center | Adding the Tweet button to your website">
+  <input name="original_referer" type="hidden" value="https://support.twitter.com/articles/231474-adding-the-tweet-button-to-your-website">
+  <input name="via" type="hidden" value="support">
+  <input name="tw_p" type="hidden" value="tweetbutton">
+
+      <input type="hidden" name="repost_after_login" value="/intent/tweet">
+    <input type="hidden" name="authenticity_token" value="d6a4d33b22dc7036452c8917b8337486873d4f31">
+
+
+    <label for="status" id="status-label">Tweet Text</label>
+  </div>
+
+
+  <div class="bd ">
+    <span class="field">
+      <textarea id="status" name="status" required autofocus
+        aria-required="true" aria-describedby="post-error char-count"
+        
+      ></textarea>
+    </span>
+  </div>
+
+  <div class="ft">
+     <fieldset class="sign-in">
+  <legend>Log in to Twitter</legend>
+  <div class="row user ">
+    <label for="username_or_email" tabindex="-1">
+      Phone, email or username
+    </label>
+    <input
+      type="text"
+      id="username_or_email"
+      name="session[username_or_email]"
+      required="required"
+      autocorrect="off"
+      autocapitalize="off"
+      aria-required="true"
+      class="text"
+      
+      
+    />
+  </div>
+  <div class="row password ">
+    <label for="password" tabindex="-1">Password</label>
+    <input
+      type="password"
+      class="password text"
+      id="password"
+      name="session[password]"
+      required="required"
+      aria-required="true"
+      value
+    >
+  </div>
+  <p>
+    <input type="checkbox" name="remember_me" id="remember" value="1">
+    <label for="remember">Remember me</label>
+    &middot;
+    <a
+      href="/account/begin_password_reset"
+      class="alternate-context"
+    >Forgot password?</a>
+  </p>
+  <p>
+      <label>This project was created by Alex and Charlie at Bitcamp 2015 to generate the perfect hashtags for your tweets</label>
+  </p>
+</fieldset>
+
+    <fieldset class="submit">
+      <input
+        type="submit"
+        class="button selected submit"
+        
+        value="Log in and Tweet">
+    </fieldset>
+    
+    <fieldset class="submit">
+      <input
+        type="Button"
+        class="button selected submit"
+        id = "HashGen"
+        value="Generate Hashtags">
+    </fieldset>
+    
+    <div class="sign-in">
+        <p>Approximate Loading Time: 5-20 seconds</p>
+    </div>
+    
+  </div>
+</form>
+
+<div id="loadImage"><img src="/static/ajax-loader.gif" /></div>
+
+<style>
+        #loadImage {
+            width:45px;
+            height:45px;
+            background:#fff;
+            vertical-align:right;
+            float:right;
+            position:right;
+            z-index:90;
+            margin-right:100px;
+            display:None;
+        }
+</style>
+
+<div id="thing" style="visibility: hidden;height:1px"></div>
+<div id="FormatHash" style="display:None;width:640px;height:500px;"></div>
+
+<style>
+    .HashButton {
+      color: #f4f4f4;
+      background:#55aaca;
+      font-weight: bold;
+      padding: 8px 12px 8px 12px;
+      font-family: Arial,sans-serif;
+      border: solid 0 #e3edf4;
+      border-bottom: 2px solid #3a9a95;
+      border-radius: 4px;
+      margin: 10px;
+    }
+    .HashButton:Hover {
+      background:#069;
+    }
+</style>
+
+<script>
+  function addTag(i){
+      document.getElementById("status").value += document.getElementById("HashTag"+i).textContent;
+  }
+  function getHash(url){
+      function organize(){
+        var data = $('#thing').text();
+        var arr = data.split(','), i;
+        var letterSum = 0;
+        var wordSum = 1;
+        for(i=0 ; i<arr.length ; i++){
+            //console.log(arr[i]);
+            //console.log(wordSum, letterSum);
+
+            //load nice buttons into div
+            var filter = arr[i].replace(/[^a-zA-Z0-9#]/,"");
+            //if (filter.length > 1){
+            //    $("#FormatHash").append('<a class=\"HashButton\" id=\"HashTag'+i+'\" onClick="addTag('+i+')"> '+filter+"</a>");
+            //}
+            if (filter.length > 1){
+                if (filter[0] != '#'){filter = '#' + filter;}
+                if (wordSum % 6 != 0 && letterSum < 37) {
+                    $("#FormatHash").append('<a class=\"HashButton\" id=\"HashTag'+i+'\" onClick="addTag('+i+')"> '+filter+"</a>");
+                }
+                else {
+                    $("#FormatHash").append('<div style="height:20px"></div><a class=\"HashButton\" id=\"HashTag'+i+'\" onClick="addTag('+i+')"> '+filter+"</a>");
+                    letterSum = 0;
+                    wordSum = 1;
+                }
+            }
+            letterSum += filter.length;
+            wordSum++;
+        }
+        $("#FormatHash").show("slow");
+      }
+      function clearHash(){
+          $("#FormatHash").hide("slow", function (){$("#FormatHash").empty();});
+          $("#thing").html("");
+
+      }
+      function hideLoad(){ $("#loadImage").hide("slow", organize); }
+      function showLoad(){ $("#loadImage").show("fast"); }
+      function showHash(){ $("#thing").load(url,null, hideLoad).show("slow")};
+      clearHash();
+      showLoad();
+      showHash();
+  };
+</script>
+
+<script>
+      document.getElementById("HashGen").onclick = function () {
+            var input = document.getElementById("status").value;
+            input = input.replace(/[^\w\s]/gi, '');
+            console.log('http://hu.pythonanywhere.com/TweetTime/getHash/' + document.getElementById("status").value);
+            //console.log(input);
+            getHash('http://hu.pythonanywhere.com/TweetTime/getHash/' + encodeURIComponent( input ));
+      };
+</script>
+
+</div>
+        <div id="promo" class="thumbnail">
+</div>
+
+
+    <script type="text/javascript" charset="utf-8" nonce="21iPU38mwx5fBsAguW09yQ==">
+      var twttr = twttr || {};
+      twttr.form_authenticity_token = 'd6a4d33b22dc7036452c8917b8337486873d4f31';
+      if (self == top) {
+        document.documentElement.style.display = 'block';
+      }
+    </script>
+
+    <script src="https://abs.twimg.com/a/1434576220/tfw/loadrunner.js" type="text/javascript" data-path="https://abs.twimg.com/a/1434576220/tfw" data-main="tfw/intents/main"></script>
+
+    <script type="text/javascript" charset="utf-8" nonce="21iPU38mwx5fBsAguW09yQ==">
+
+
+
+
+
+
+  var twttr = twttr || {};
+  twttr.tco = {
+    length: 22
+  };
+
+  using('tfw/intents/tweetbox', 'imports/jquery', function(Tweetbox, $) {
+    $('#status').each(function() {
+      new Tweetbox(this, 0, 61);
+    });
+  });
+
+
+</script>
+
+    <script type="text/javascript" nonce="21iPU38mwx5fBsAguW09yQ==">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+
+  try {
+    var pageTracker = _gat._getTracker("UA-30775-6");
+    pageTracker._setDomainName("twitter.com");
+    
+    pageTracker._setVar('Not Logged In');
+    pageTracker._setVar('lang: en');
+    pageTracker._initData();
+    pageTracker._trackPageview();
+  } catch(err) { }
+</script>
+
+  </body>
+</html>

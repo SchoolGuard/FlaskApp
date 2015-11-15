@@ -1,0 +1,99 @@
+<!--
+In response to a comment made by myself (username: bradleygriffith) here:
+http://stackoverflow.com/questions/2856992/google-maps-given-a-point-how-to-find-all-points-at-a-given-road-distance/2857108#comment12657465_2857108
+
+
+The findCoordinates function is based heavily on ConroyP's code here:
+http://stackoverflow.com/questions/3552334/finding-a-set-of-coordinates-within-a-certain-range-from-latitude-longitide
+-->
+<html>
+  <head>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript">
+
+      init_lat = 37.4419;
+      init_lon = -122.1219;
+      range = .03;
+
+      var markers = [];
+
+      function findCoordinates(lat, long, range)
+      {
+          for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(null);
+          }
+          // How many points do we want? (should probably be function param..)
+          var numberOfPoints = 16;
+          var degreesPerPoint = 360 / numberOfPoints;
+
+          // Keep track of the angle from centre to radius
+          var currentAngle = 0;
+
+          // The points on the radius will be lat+x2, long+y2
+          var x2;
+          var y2;
+          // Track the points we generate to return at the end
+          var points = new Array();
+
+          for(var i=0; i < numberOfPoints; i++)
+          {
+              // X2 point will be cosine of angle * radius (range)
+              x2 = Math.cos(currentAngle) * range;
+              // Y2 point will be sin * range
+              y2 = Math.sin(currentAngle) * range;
+              //alert("X"+x2);
+              //alert("Y"+ y2);
+              // Assuming here you're using points for each x,y..
+              newLat = lat+x2;
+              newLong = long+y2;
+              var lat_long = new google.maps.LatLng(newLat,newLong);
+              var marker = new google.maps.Marker({
+                 position: lat_long,
+                 map: map
+              });
+
+              markers.push(marker);
+
+
+              // Shift our angle around for the next point
+              currentAngle += degreesPerPoint;
+          }
+          // Return the points we've generated
+          //return points;
+      }
+
+      function initialize() {
+        var mapDiv = document.getElementById('map-canvas');
+        map = new google.maps.Map(mapDiv, {
+          center: new google.maps.LatLng(init_lat, init_lon),
+          zoom: 13,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+        var lat_long = new google.maps.LatLng(init_lat,init_lon);
+        var marker = new google.maps.Marker({
+            position: lat_long,
+            map: map
+        });
+
+        //findCoordinates(init_lat,init_lon,range);
+        if (! isNaN(parseInt(document.getElementById("val").value))) {
+            findCoordinates(init_lat,init_lon, document.getElementById("val").value);
+        }
+        else {
+            findCoordinates(init_lat,init_lon,range);
+        }
+      }
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  <body style="font-family: Arial; border: 0 none;">
+    <div id="map-canvas" style="width: 500px; height: 400px"></div>
+
+  <div>
+      <p>Distance (in degrees): <input size="20" type="text" name="d" id="val" value="0.02"></p>
+      <input type="submit" value="RUN!" id="dist" onclick="initialize()">
+  </div>
+
+  </body>
+</html>
